@@ -8,6 +8,11 @@ use Filament\Auth\Pages\Login as BasePage;
 
 final class Login extends BasePage
 {
+    protected function getRedirectUrl(): string
+    {
+        return route('central.tenants');
+    }
+
     public function mount(): void
     {
         parent::mount();

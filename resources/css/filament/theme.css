@@ -1,0 +1,9 @@
+@import '../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../app/Filament/**/*';
+@source '../../../resources/views/filament/**/*';
+
+
+.fi-sidebar-nav {
+    @apply bg-gray-50 shadow-xl dark:bg-gray-900;
+}

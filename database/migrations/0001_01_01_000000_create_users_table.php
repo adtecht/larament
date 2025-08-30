@@ -10,8 +10,10 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table): void {
-            $table->id();
+        Schema::create('users', function (Blueprint $table): void
+        {
+            $table->bigIncrements('id')->from(mt_rand(10000000, 99999999));
+
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -19,18 +21,24 @@ return new class extends Migration
             $table->text('app_authentication_secret')->nullable();
             $table->text('app_authentication_recovery_codes')->nullable();
             $table->rememberToken();
+
             $table->timestamps();
+            $table->softDeletes();
         });
 
-        Schema::create('password_reset_tokens', function (Blueprint $table): void {
+        Schema::create('password_reset_tokens', function (Blueprint $table): void
+        {
             $table->string('email')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
 
-        Schema::create('sessions', function (Blueprint $table): void {
-            $table->string('id')->primary();
+        Schema::create('sessions', function (Blueprint $table): void
+        {
+            $table->bigIncrements('id')->from(mt_rand(10000000, 99999999));
+
             $table->foreignId('user_id')->nullable()->index();
+            
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->longText('payload');

@@ -10,7 +10,7 @@ use function Pest\Laravel\assertDatabaseMissing;
 it('can create a new user', function () {
     $user = User::factory()->make();
 
-    visit('/admin')
+    visit('/')
         ->click('Users')
         ->click('New user')
         ->fill('form.name', $user->name)
@@ -28,7 +28,7 @@ it('can create a new user', function () {
 it('can edit an existing user', function () {
     $newRecord = User::factory()->make();
 
-    visit('/admin')
+    visit('/')
         ->click('Users')
         ->click('Edit')
         ->fill('form.name', $newRecord->name)
@@ -41,7 +41,7 @@ it('can edit an existing user', function () {
 });
 
 it('can delete an existing user', function () {
-    visit('/admin')
+    visit('/')
         ->click('Users')
         ->click('Edit')
         ->click('Delete')
